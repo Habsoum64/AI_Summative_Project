@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object Detection System</title>
+  <link rel="stylesheet" href="od_web-home.css">
+</head>
+
+<body>
+  <div id="container">
+    <h1>Welcome to Our Object Detection System</h1>
+
+    <div id="upload-container">
+      <input type="file" id="upload-input" style="display: none;" onchange="handleFileUpload(this)">
+      <label for="upload-input" id="upload-label">
+        <img id="uploaded-image" alt="Uploaded Image">
+        <span id="upload-text">Upload Picture</span>
+      </label>
+    </div>
+
+    <div id="image-preview-container">
+      <img id="image-preview" alt="Image Preview">
+    </div>
+
+    <a href="Result.html" id="process-link">
+      <button id="process-button" onclick="redirectToResultsPage()">Process</button>
+    </a>
+  </div>
+
+  <script>
+    function handleFileUpload(input) {
+      var file = input.files[0];
+      var reader = new FileReader();
+
+      reader.onload = function(event) {
+        var imageData = event.target.result;
+        document.getElementById('uploaded-image').src = imageData;
+        document.getElementById('image-preview').src = imageData;
+        document.getElementById('upload-text').style.display = 'none';
+      };
+
+      reader.readAsDataURL(file);
+    }
+
+    function redirectToResultsPage() {
+      // Add your logic to redirect to the results page
+      console.log("Redirecting to Results Page");
+    }
+  </script>
+</body>
+</html>
